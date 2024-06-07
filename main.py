@@ -54,15 +54,15 @@ while game_is_on:
 
     # detect collision with wall
     if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
-        game_is_on = False
-        scoreboard.game_over()
+        scoreboard.reset()
+        snake.reset()
 
-
+    # detect collision with itself
     for segment in snake.segments[1:]:
         # using slicing here to skip fist segment i.e head as there is always collision of head and head
         if snake.head.distance(segment) < 5:
-            game_is_on = False
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
 
 
 
